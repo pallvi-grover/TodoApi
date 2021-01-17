@@ -19,31 +19,17 @@ function addItem() {
     fetch(uri, {
         method: 'POST',
         headers: {
-            //'Accept': 'application/json',
-            //'Accept': 'text/html',
-            //'Content-Type': 'application/json'
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-            //'Content-Type': 'text/html;charset=UTF-8'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
-       // body: JSON.stringify(item)
-        body: 'foo=bar&lorem=ipsum'
+        body: JSON.stringify(item)
     })
-        //.then(response => response.json())
-        //.then(() => {
-        //    getItems();
-        //    addNameTextbox.value = '';
-        //})
-
-
-        //.then(response => response.json())
-        .then(function (data) {
-            console.log('Request suceeded: ', data);
+        .then(response => response.json())
+        .then(() => {
+            getItems();
+            addNameTextbox.value = '';
         })
-        //.catch(error => console.error('Unable to add item.', error));
-        .catch(function (error) {
-            console.log('Request failed: ', error);
-
-    });
+        .catch(error => console.error('Unable to add item.', error));
 }
 
 function deleteItem(id) {
